@@ -10,16 +10,19 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "COLE_AQUI",
-    authDomain: "COLE_AQUI",
-    projectId: "COLE_AQUI",
-    storageBucket: "COLE_AQUI",
-    messagingSenderId: "COLE_AQUI",
-    appId: "COLE_AQUI"
-  };
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-  const app = initializeApp(firebaseConfig);
+const firebaseConfig = {
+  apiKey: "AIzaSyB8vxKYjMs4y6amNbUEH_s3M7JQgWTmrCo",
+  authDomain: "projeto-futuro-eb9ae.firebaseapp.com",
+  projectId: "projeto-futuro-eb9ae",
+  storageBucket: "projeto-futuro-eb9ae.firebasestorage.app",
+  messagingSenderId: "946526865803",
+  appId: "1:946526865803:web:36ee73dcca848e85cd478e"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 </script>
 <body>
