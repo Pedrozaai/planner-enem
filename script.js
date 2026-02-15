@@ -48,3 +48,15 @@ function salvarProgresso(materia, valor) {
 function carregarProgresso(materia) {
   return localStorage.getItem(materia) || 0;
 }
+const botaoEntrar = document.getElementById("entrar");
+
+botaoEntrar.addEventListener("click", function() {
+  document.getElementById("auth-screen").classList.remove("active");
+  document.getElementById("platform").classList.add("active");
+
+  const meta = document.getElementById("goal").value;
+  const tempo = document.getElementById("study-time").value;
+
+  document.getElementById("goal-display").innerText = meta;
+  document.getElementById("time-display").innerText = tempo + "h";
+});
