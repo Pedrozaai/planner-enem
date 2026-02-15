@@ -6,25 +6,7 @@
   <title>Projeto Futuro</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-  <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-const firebaseConfig = {
-  apiKey: "AIzaSyB8vxKYjMs4y6amNbUEH_s3M7JQgWTmrCo",
-  authDomain: "projeto-futuro-eb9ae.firebaseapp.com",
-  projectId: "projeto-futuro-eb9ae",
-  storageBucket: "projeto-futuro-eb9ae.firebasestorage.app",
-  messagingSenderId: "946526865803",
-  appId: "1:946526865803:web:36ee73dcca848e85cd478e"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-</script>
 <body>
 
   <div id="app">
@@ -36,13 +18,18 @@ const app = initializeApp(firebaseConfig);
         <p class="subtitle">Construa hoje o seu amanhã.</p>
 
         <input type="email" id="email" placeholder="Email" />
-        <input type="password" id="password" placeholder="Senha" />
+
+        <!-- CAMPO SENHA COM OLHINHO -->
+        <div class="senha-container">
+          <input type="password" id="password" placeholder="Senha" />
+          <span id="toggleSenha">👁️</span>
+        </div>
 
         <input type="text" id="course" placeholder="Curso desejado (ex: Medicina, Direito...)" />
         <input type="number" id="study-time" placeholder="Horas disponíveis por dia" />
         <input type="number" id="goal" placeholder="Meta de nota (ex: 750)" />
 
-        <button onclick="startPlatform()">Entrar</button>
+        <button id="entrar">Entrar</button>
       </div>
     </section>
 
@@ -83,22 +70,43 @@ const app = initializeApp(firebaseConfig);
             <h2 id="time-display"></h2>
           </div>
         </div>
-
-        <div id="materias" class="page"><h3>Matérias</h3></div>
-        <div id="flashcards" class="page"><h3>Flashcards</h3></div>
-        <div id="questoes" class="page"><h3>Questões ENEM</h3></div>
-        <div id="revisao" class="page"><h3>Revisão com Mapa Mental</h3></div>
-        <div id="videos" class="page"><h3>Videoaulas</h3></div>
-        <div id="exercicios" class="page"><h3>Exercícios</h3></div>
-        <div id="simulado" class="page"><h3>Simulado</h3></div>
-        <div id="config" class="page"><h3>Configurações</h3></div>
-
       </main>
 
     </section>
 
   </div>
 
+  <!-- FIREBASE -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+  apiKey: "AIzaSyB8vxKYjMs4y6amNbUEH_s3M7JQgWTmrCo",
+  authDomain: "projeto-futuro-eb9ae.firebaseapp.com",
+  projectId: "projeto-futuro-eb9ae",
+  storageBucket: "projeto-futuro-eb9ae.firebasestorage.app",
+  messagingSenderId: "946526865803",
+  appId: "1:946526865803:web:36ee73dcca848e85cd478e"
+};
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // OLHINHO DA SENHA
+    const senhaInput = document.getElementById("password");
+    const toggleSenha = document.getElementById("toggleSenha");
+
+    toggleSenha.addEventListener("click", function() {
+      if (senhaInput.type === "password") {
+        senhaInput.type = "text";
+      } else {
+        senhaInput.type = "password";
+      }
+    });
+  </script>
+
   <script src="script.js"></script>
+
 </body>
 </html>
