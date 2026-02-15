@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Planner ENEM</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .aba { display: none; }
+    .ativa { display: block; }
+    button { margin: 5px; padding: 8px; }
+  </style>
+</head>
+<body>
+
+<h1>Planner ENEM - Fisioterapia</h1>
+
+<div>
+  <button onclick="mostrar('rotina')">Rotina</button>
+  <button onclick="mostrar('flashcards')">Flashcards</button>
+  <button onclick="mostrar('simulado')">Simulado</button>
+</div>
+
+<div id="rotina" class="aba ativa">
+  <h2>Progresso</h2>
+  <input type="number" id="progresso" placeholder="Digite %">
+  <button onclick="atualizar()">Atualizar</button>
+  <p id="resultado"></p>
+</div>
+
+<div id="flashcards" class="aba">
+  <h2>Flashcard</h2>
+  <p><b>Pergunta:</b> Função do sistema muscular?</p>
+  <p><b>Resposta:</b> Movimento e postura.</p>
+</div>
+
+<div id="simulado" class="aba">
+  <h2>Simulado</h2>
+  <input type="number" id="acertos" placeholder="Acertos">
+  <input type="number" id="total" placeholder="Total">
+  <button onclick="tri()">Calcular TRI</button>
+  <p id="nota"></p>
+</div>
+
+<script>
+function mostrar(id) {
+  document.querySelectorAll('.aba').forEach(div => div.classList.remove('ativa'));
+  document.getElementById(id).classList.add('ativa');
+}
+
+function atualizar() {
+  let p = document.getElementById('progresso').value;
+  document.getElementById('resultado').innerText = "Seu progresso: " + p + "%";
+}
+
+function tri() {
+  let a = document.getElementById('acertos').value;
+  let t = document.getElementById('total').value;
+  let nota = 200 + (a/t) * 600 * 0.6;
+  document.getElementById('nota').innerText = "Nota estimada: " + Math.round(nota);
+}
+</script>
+
+</body>
+</html>
