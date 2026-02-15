@@ -217,11 +217,20 @@ button{cursor:pointer;font-weight:600}
 <section id="estilo" class="screen">
 <h2 style="text-align:center">Escolha o estilo</h2>
 <div class="style-container">
-<div class="style-box" onclick="selectStyle('academico',this)">
+<div class="style-box" 
+onclick="selectStyle('academico',this)">
+  <img 
+src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f"
+
+style="width:100%;border-radius:10px;margin-bottom:10px;object-fit:cover:heigth:150px;">
 <h3>Acadêmico</h3>
 <p>Clássico, formal, sério.</p>
 </div>
 <div class="style-box" onclick="selectStyle('moderno',this)">
+  <img
+src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+
+style="width:100%:border-radius:10px;margin-bottom:10px;object-fit:cover;heigth:150px;">
 <h3>Moderno</h3>
 <p>Roxo + Verde, jovem.</p>
 </div>
@@ -283,16 +292,8 @@ let meta=document.getElementById("meta").value;
 document.getElementById("saudacao").innerText="Oi, "+nome;
 document.getElementById("cursoInfo").innerText="Curso: "+curso;
 
-let hoje=new Date();
-let fim=new Date(hoje.getFullYear(),11,31);
-let inicio=new Date(hoje.getFullYear(),0,1);
-
-let totalAno=(fim-inicio)/(1000*60*60*24);
-let passou=(hoje-inicio)/(1000*60*60*24);
-let progresso=(passou/totalAno)*100;
-
-document.getElementById("barra").style.width=progresso+"%";
-
+let progresso = 0;
+document.getElementById("barra").style.width = progresso + "%";
 document.getElementById("metaInfo").innerText=
 "Meta semanal mínima: "+(horas*7)+"h | Meta de nota: "+meta;
 }
