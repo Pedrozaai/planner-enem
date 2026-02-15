@@ -20,7 +20,7 @@
         <input type="email" id="email" placeholder="Email" />
 
         <!-- CAMPO SENHA COM OLHINHO -->
-        <div class="senha-container">
+        <div class="password-container">
           <input type="password" id="password" placeholder="Senha" />
           <span id="toggleSenha">👁️</span>
         </div>
@@ -107,6 +107,74 @@
   </script>
 
   <script src="script.js"></script>
+</body>
+</html>
+
+<!-- Campo de senha -->
+    <div style="position: relative;">
+        <input type="password" id="password" placeholder="Digite sua senha">
+        <span id="togglePassword" 
+              style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+            👁️
+        </span>
+    </div>
+
+    <!-- Campo de curso -->
+    <input list="cursos" id="curso" placeholder="Escolha seu curso">
+
+    <datalist id="cursos">
+        <input list="cursos" id="curso" placeholder="Escolha seu curso">
+
+<datalist id="cursos">
+  <option value="Administração">
+  <option value="Arquitetura e Urbanismo">
+  <option value="Artes Visuais">
+  <option value="Biomedicina">
+  <option value="Ciência da Computação">
+  <option value="Ciências Biológicas">
+  <option value="Ciências Contábeis">
+  <option value="Design Gráfico">
+  <option value="Direito">
+  <option value="Educação Física">
+  <option value="Enfermagem">
+  <option value="Engenharia Civil">
+  <option value="Engenharia de Produção">
+  <option value="Engenharia Elétrica">
+  <option value="Engenharia Mecânica">
+  <option value="Farmácia">
+  <option value="Fisioterapia">
+  <option value="Gastronomia">
+  <option value="História">
+  <option value="Jornalismo">
+  <option value="Letras">
+  <option value="Marketing">
+  <option value="Matemática">
+  <option value="Medicina">
+  <option value="Medicina Veterinária">
+  <option value="Nutrição">
+  <option value="Odontologia">
+  <option value="Pedagogia">
+  <option value="Psicologia">
+  <option value="Publicidade e Propaganda">
+  <option value="Relações Internacionais">
+  <option value="Serviço Social">
+  <option value="Sistemas de Informação">
+  <option value="Tecnologia da Informação">
+  <option value="Teologia">
+    </datalist>
+
+    <!-- Script -->
+    <script>
+        const toggle = document.getElementById("togglePassword");
+        const password = document.getElementById("password");
+
+        toggle.addEventListener("click", function () {
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+
+            toggle.textContent = type === "password" ? "👁️" : "🙈";
+        });
+    </script>
 
 </body>
 </html>
