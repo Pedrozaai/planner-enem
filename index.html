@@ -1,234 +1,205 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projeto Futuro</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeto Futuro</title>
 
-  <style>
-    .password-container {
-      position: relative;
-      width: 100%;
-    }
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: 0.3s;
+}
 
-    #toggleSenha {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
-      font-size: 18px;
-    }
-  </style>
+.screen {
+  display: none;
+  padding: 30px;
+}
+
+.screen.active {
+  display: block;
+}
+
+input, button {
+  display: block;
+  margin: 10px 0;
+  padding: 8px;
+  width: 260px;
+}
+
+.password-box {
+  position: relative;
+  width: 260px;
+}
+
+.password-box input {
+  width: 100%;
+  padding-right: 35px;
+}
+
+.password-box span {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Temas */
+body.academico {
+  background: #f4f6fa;
+  color: #111;
+}
+
+body.moderno {
+  background: #111827;
+  color: white;
+}
+</style>
 </head>
 
-<body>
-
-  <div id="app">
-
-    <!-- Tela de Autenticação -->
-    <section id="auth-screen" class="screen active">
-      <div class="auth-container">
-        <h1>Projeto Futuro</h1>
-        <p class="subtitle">Construa hoje o seu amanhã.</p>
-
-        <input type="email" id="email" placeholder="Email" />
-
-        <!-- SENHA COM OLHO -->
-        <div class="password-container">
-          <input type="password" id="password" placeholder="Senha" />
-          <span id="toggleSenha">👁️‍🗨️</span>
-        </div>
-
-        <!-- CURSO -->
-        <input list="cursos" id="course" placeholder="Curso desejado" />
-
-       <datalist id="cursos">
-  <option value="Administração">
-  <option value="Arquitetura e Urbanismo">
-  <option value="Artes Visuais">
-  <option value="Biomedicina">
-  <option value="Ciência da Computação">
-  <option value="Ciências Biológicas">
-  <option value="Ciências Contábeis">
-  <option value="Design Gráfico">
-  <option value="Direito">
-  <option value="Educação Física">
-  <option value="Enfermagem">
-  <option value="Engenharia Civil">
-  <option value="Engenharia de Produção">
-  <option value="Engenharia Elétrica">
-  <option value="Engenharia Mecânica">
-  <option value="Farmácia">
-  <option value="Fisioterapia">
-  <option value="Gastronomia">
-  <option value="História">
-  <option value="Jornalismo">
-  <option value="Letras">
-  <option value="Marketing">
-  <option value="Matemática">
-  <option value="Medicina">
-  <option value="Medicina Veterinária">
-  <option value="Nutrição">
-  <option value="Odontologia">
-  <option value="Pedagogia">
-  <option value="Psicologia">
-  <option value="Publicidade e Propaganda">
-  <option value="Relações Internacionais">
-  <option value="Serviço Social">
-  <option value="Sistemas de Informação">
-  <option value="Tecnologia da Informação">
-  <option value="Teologia">
-</datalist>
-
-        <input type="number" id="study-time" placeholder="Horas disponíveis por dia" />
-        <input type="number" id="goal" placeholder="Meta de nota (ex: 750)" />
-
-        <button id="entrar">Entrar</button>
-      </div>
-    </section>
-
-  </div>
 <body class="academico">
 
-<!-- CADASTRO -->
-<section id="auth-screen" class="screen active">
+<!-- TELA 1 - CADASTRO -->
+<section id="cadastro" class="screen active">
   <h2>Cadastro</h2>
-  <input id="course" placeholder="Curso" />
-  <input id="study-time" placeholder="Horas por dia" />
-  <input id="goal" placeholder="Meta" />
+
+  <input type="email" id="email" placeholder="Email">
+
+  <div class="password-box">
+    <input type="password" id="senha" placeholder="Senha">
+    <span onclick="toggleSenha()">👁️</span>
+  </div>
+
+  <!-- CURSO COM DATALIST -->
+  <input list="cursos" id="curso" placeholder="Escolha o curso da sua faculdade">
+
+  <datalist id="cursos">
+    <option value="Administração">
+    <option value="Arquitetura e Urbanismo">
+    <option value="Artes Visuais">
+    <option value="Biomedicina">
+    <option value="Ciência da Computação">
+    <option value="Ciências Biológicas">
+    <option value="Ciências Contábeis">
+    <option value="Design Gráfico">
+    <option value="Direito">
+    <option value="Educação Física">
+    <option value="Enfermagem">
+    <option value="Engenharia Civil">
+    <option value="Engenharia de Produção">
+    <option value="Engenharia Elétrica">
+    <option value="Engenharia Mecânica">
+    <option value="Farmácia">
+    <option value="Fisioterapia">
+    <option value="Gastronomia">
+    <option value="História">
+    <option value="Jornalismo">
+    <option value="Letras">
+    <option value="Marketing">
+    <option value="Matemática">
+    <option value="Medicina">
+    <option value="Medicina Veterinária">
+    <option value="Nutrição">
+    <option value="Odontologia">
+    <option value="Pedagogia">
+    <option value="Psicologia">
+    <option value="Publicidade e Propaganda">
+    <option value="Relações Internacionais">
+    <option value="Serviço Social">
+    <option value="Sistemas de Informação">
+    <option value="Tecnologia da Informação">
+    <option value="Teologia">
+  </datalist>
+
+  <input type="number" id="horas" placeholder="Horas de estudo por dia">
+
+  <input type="text" id="meta" placeholder="Sua meta">
+
   <button onclick="irParaEstilo()">Continuar</button>
 </section>
 
-<!-- ESCOLHA DE ESTILO -->
-<section id="style-screen" class="screen">
-  <h2>Escolha o estilo da sua experiência</h2>
+
+<!-- TELA 2 - ESCOLHA DE VISUAL -->
+<section id="estilo" class="screen">
+  <h2>Escolha o estilo da plataforma</h2>
 
   <button onclick="definirTema('academico')">
-    Plataforma Acadêmica
+    Visual Acadêmico
   </button>
 
   <button onclick="definirTema('moderno')">
-    Plataforma Moderna
+    Visual Moderno
   </button>
+
+  <button onclick="entrar()">Entrar</button>
 </section>
 
-<!-- PLATAFORMA -->
-<section id="platform" class="screen">
 
-  <aside class="sidebar">
-    <ul>
-      <li onclick="navigate('dashboard')">Dashboard</li>
-      <li onclick="navigate('materias')">Matérias</li>
-      <li onclick="navigate('simulado')">Simulado</li>
-      <li onclick="navigate('config')">Configurações</li>
-    </ul>
-  </aside>
+<!-- TELA 3 - PLATAFORMA -->
+<section id="plataforma" class="screen">
+  <h2>Bem-vinda à sua plataforma!</h2>
 
-  <main id="content">
-
-    <div id="dashboard" class="page active">
-      <h3>Dashboard</h3>
-      <p>Meta: <span id="goal-display"></span></p>
-      <p>Horas por dia: <span id="time-display"></span></p>
-    </div>
-
-    <div id="materias" class="page">
-      <h3>Matérias</h3>
-      <p>Em construção...</p>
-    </div>
-
-    <div id="simulado" class="page">
-      <h3>Simulado</h3>
-
-      <select id="dificuldade">
-        <option value="facil">Fácil</option>
-        <option value="medio">Médio</option>
-        <option value="dificil">Difícil</option>
-      </select>
-
-      <button onclick="iniciarSimulado()">Iniciar</button>
-
-      <div id="simulado-area"></div>
-    </div>
-
-    <div id="config" class="page">
-      <h3>Configurações</h3>
-
-      <button onclick="definirTema('academico')">Tema Acadêmico</button>
-      <button onclick="definirTema('moderno')">Tema Moderno</button>
-    </div>
-
-  </main>
-
+  <p><strong>Email:</strong> <span id="mostrarEmail"></span></p>
+  <p><strong>Curso:</strong> <span id="mostrarCurso"></span></p>
+  <p><strong>Horas por dia:</strong> <span id="mostrarHoras"></span></p>
+  <p><strong>Meta:</strong> <span id="mostrarMeta"></span></p>
 </section>
-  <!-- SCRIPT -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-    const firebaseConfig = {
-      apiKey: "SUA_API_KEY",
-      authDomain: "SEU_AUTH_DOMAIN",
-      projectId: "SEU_PROJECT_ID",
-      storageBucket: "SEU_STORAGE_BUCKET",
-      messagingSenderId: "SEU_SENDER_ID",
-      appId: "SEU_APP_ID"
-    };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    // GARANTE QUE O HTML JÁ CARREGOU
-    document.addEventListener("DOMContentLoaded", function () {
-
-      const senhaInput = document.getElementById("password");
-      const toggleSenha = document.getElementById("toggleSenha");
-
-      toggleSenha.addEventListener("click", function () {
-        if (senhaInput.type === "password") {
-          senhaInput.type = "text";
-          toggleSenha.textContent = "👁️";
-        } else {
-          senhaInput.type = "password";
-          toggleSenha.textContent = "👁️‍🗨️";
-        }
-      });
-
-    });
 <script>
 
-function irParaEstilo() {
-  document.getElementById("auth-screen").classList.remove("active");
-  document.getElementById("style-screen").classList.add("active");
-
-  document.getElementById("goal-display").textContent =
-    document.getElementById("goal").value;
-
-  document.getElementById("time-display").textContent =
-    document.getElementById("study-time").value;
+// OLHINHO
+function toggleSenha() {
+  const senha = document.getElementById("senha");
+  senha.type = senha.type === "password" ? "text" : "password";
 }
 
+
+// VALIDAR E IR PARA ESTILO
+function irParaEstilo() {
+
+  if (
+    email.value === "" ||
+    senha.value === "" ||
+    curso.value === "" ||
+    horas.value === "" ||
+    meta.value === ""
+  ) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  cadastro.classList.remove("active");
+  estilo.classList.add("active");
+}
+
+
+// DEFINIR TEMA
 function definirTema(tema) {
   document.body.className = tema;
-
-  document.getElementById("style-screen").classList.remove("active");
-  document.getElementById("platform").classList.add("active");
 }
 
-function navigate(page) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  document.getElementById(page).classList.add("active");
-}
 
-function iniciarSimulado() {
-  const dificuldade = document.getElementById("dificuldade").value;
-  const area = document.getElementById("simulado-area");
+// ENTRAR
+function entrar() {
 
-  area.innerHTML = "Simulado iniciado - Dificuldade: " + dificuldade;
+  estilo.classList.remove("active");
+  plataforma.classList.add("active");
+
+  mostrarEmail.textContent = email.value;
+  mostrarCurso.textContent = curso.value;
+  mostrarHoras.textContent = horas.value;
+  mostrarMeta.textContent = meta.value;
 }
 
 </script>
+
 </body>
 </html>
