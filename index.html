@@ -5,198 +5,303 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projeto Futuro</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  transition: 0.3s;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-.screen {
-  display: none;
-  padding: 30px;
+body{
+  font-family:'Poppins', sans-serif;
+  background:#f4f4f4;
+  transition:0.4s;
 }
 
-.screen.active {
-  display: block;
+.screen{
+  display:none;
+  min-height:100vh;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  padding:40px;
 }
 
-input, button {
-  display: block;
-  margin: 10px 0;
-  padding: 8px;
-  width: 260px;
+.active{
+  display:flex;
 }
 
-.password-box {
-  position: relative;
-  width: 260px;
+.card{
+  background:white;
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  width:350px;
 }
 
-.password-box input {
-  width: 100%;
-  padding-right: 35px;
+input,button{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
 }
 
-.password-box span {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
+button{
+  border:none;
+  background:#2563eb;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
 }
 
-button {
-  cursor: pointer;
+/* ESCOLHA DE ESTILO */
+
+.style-wrapper{
+  display:flex;
+  gap:40px;
 }
 
-/* Temas */
-body.academico {
-  background: #f4f6fa;
-  color: #111;
+.style-card{
+  width:340px;
+  padding:20px;
+  border-radius:14px;
+  cursor:pointer;
+  border:2px solid transparent;
+  transition:0.3s;
 }
 
-body.moderno {
-  background: #111827;
-  color: white;
+.style-card:hover{
+  transform:scale(1.03);
 }
+
+.selected{
+  border:3px solid #22c55e;
+}
+
+.preview{
+  height:160px;
+  border-radius:10px;
+  padding:10px;
+  margin-bottom:15px;
+}
+
+/* Preview Acadêmico */
+.preview-academico{
+  background:#f5f1eb;
+  font-family:'Playfair Display', serif;
+  border:2px solid #5a3e2b;
+}
+
+.preview-academico div{
+  background:white;
+  border-left:6px solid #8b0000;
+  margin:6px 0;
+  padding:6px;
+  font-size:12px;
+}
+
+/* Preview Moderno */
+.preview-moderno{
+  background:#111827;
+  color:white;
+}
+
+.preview-moderno div{
+  background:linear-gradient(90deg,#6d28d9,#22c55e);
+  margin:6px 0;
+  padding:6px;
+  border-radius:6px;
+  font-size:12px;
+}
+
+/* DASHBOARD FINAL */
+
+.dashboard{
+  width:90%;
+  max-width:900px;
+}
+
+.top-bar{
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+}
+
+.study-card{
+  padding:20px;
+  border-radius:12px;
+  margin:10px 0;
+}
+
+/* ESTILO APLICADO */
+
+.academico{
+  background:#f5f1eb;
+  font-family:'Playfair Display', serif;
+  color:#3b2f2f;
+}
+
+.academico .top-bar{
+  background:#5a3e2b;
+  color:white;
+}
+
+.academico .study-card{
+  background:white;
+  border-left:6px solid #8b0000;
+}
+
+.moderno{
+  background:#0f172a;
+  color:white;
+}
+
+.moderno .top-bar{
+  background:linear-gradient(90deg,#6d28d9,#22c55e);
+}
+
+.moderno .study-card{
+  background:#1e293b;
+  border-radius:16px;
+}
+
 </style>
 </head>
+<body>
 
-<body class="academico">
-
-<!-- TELA 1 - CADASTRO -->
+<!-- CADASTRO -->
 <section id="cadastro" class="screen active">
-  <h2>Cadastro</h2>
+  <div class="card">
+    <h2>Cadastro</h2>
 
-  <input type="email" id="email" placeholder="Email">
-
-  <div class="password-box">
+    <input type="email" id="email" placeholder="Email">
     <input type="password" id="senha" placeholder="Senha">
-    <span onclick="toggleSenha()">👁️</span>
+
+    <input list="cursos" id="curso" placeholder="Escolha o curso da sua faculdade">
+    <datalist id="cursos">
+      <option value="Administração">
+      <option value="Arquitetura e Urbanismo">
+      <option value="Artes Visuais">
+      <option value="Biomedicina">
+      <option value="Ciência da Computação">
+      <option value="Ciências Biológicas">
+      <option value="Ciências Contábeis">
+      <option value="Design Gráfico">
+      <option value="Direito">
+      <option value="Educação Física">
+      <option value="Enfermagem">
+      <option value="Engenharia Civil">
+      <option value="Engenharia de Produção">
+      <option value="Engenharia Elétrica">
+      <option value="Engenharia Mecânica">
+      <option value="Farmácia">
+      <option value="Fisioterapia">
+      <option value="Gastronomia">
+      <option value="História">
+      <option value="Jornalismo">
+      <option value="Letras">
+      <option value="Marketing">
+      <option value="Matemática">
+      <option value="Medicina">
+      <option value="Medicina Veterinária">
+      <option value="Nutrição">
+      <option value="Odontologia">
+      <option value="Pedagogia">
+      <option value="Psicologia">
+      <option value="Publicidade e Propaganda">
+      <option value="Relações Internacionais">
+      <option value="Serviço Social">
+      <option value="Sistemas de Informação">
+      <option value="Tecnologia da Informação">
+      <option value="Teologia">
+    </datalist>
+
+    <input type="number" id="horas" placeholder="Horas de estudo por dia">
+    <input type="number" id="meta" placeholder="Meta de nota (Ex: 750)">
+
+    <button onclick="irParaEstilo()">Continuar</button>
   </div>
-
-  <!-- CURSO COM DATALIST -->
-  <input list="cursos" id="curso" placeholder="Escolha o curso da sua faculdade">
-
-  <datalist id="cursos">
-    <option value="Administração">
-    <option value="Arquitetura e Urbanismo">
-    <option value="Artes Visuais">
-    <option value="Biomedicina">
-    <option value="Ciência da Computação">
-    <option value="Ciências Biológicas">
-    <option value="Ciências Contábeis">
-    <option value="Design Gráfico">
-    <option value="Direito">
-    <option value="Educação Física">
-    <option value="Enfermagem">
-    <option value="Engenharia Civil">
-    <option value="Engenharia de Produção">
-    <option value="Engenharia Elétrica">
-    <option value="Engenharia Mecânica">
-    <option value="Farmácia">
-    <option value="Fisioterapia">
-    <option value="Gastronomia">
-    <option value="História">
-    <option value="Jornalismo">
-    <option value="Letras">
-    <option value="Marketing">
-    <option value="Matemática">
-    <option value="Medicina">
-    <option value="Medicina Veterinária">
-    <option value="Nutrição">
-    <option value="Odontologia">
-    <option value="Pedagogia">
-    <option value="Psicologia">
-    <option value="Publicidade e Propaganda">
-    <option value="Relações Internacionais">
-    <option value="Serviço Social">
-    <option value="Sistemas de Informação">
-    <option value="Tecnologia da Informação">
-    <option value="Teologia">
-  </datalist>
-
-  <input type="number" id="horas" placeholder="Horas de estudo por dia">
-
-  <input type="text" id="meta" placeholder="Sua meta">
-
-  <button onclick="irParaEstilo()">Continuar</button>
 </section>
 
-
-<!-- TELA 2 - ESCOLHA DE VISUAL -->
+<!-- ESCOLHA ESTILO -->
 <section id="estilo" class="screen">
   <h2>Escolha o estilo da plataforma</h2>
 
-  <button onclick="definirTema('academico')">
-    Visual Acadêmico
-  </button>
+  <div class="style-wrapper">
 
-  <button onclick="definirTema('moderno')">
-    Visual Moderno
-  </button>
+    <div class="style-card" onclick="selecionar('academico',this)">
+      <div class="preview preview-academico">
+        <div>Matemática</div>
+        <div>História</div>
+        <div>Biologia</div>
+      </div>
+      <h3>Visual Acadêmico</h3>
+    </div>
 
-  <button onclick="entrar()">Entrar</button>
+    <div class="style-card" onclick="selecionar('moderno',this)">
+      <div class="preview preview-moderno">
+        <div>Matemática</div>
+        <div>História</div>
+        <div>Biologia</div>
+      </div>
+      <h3>Visual Moderno</h3>
+    </div>
+
+  </div>
+
+  <button style="margin-top:30px;" onclick="entrar()">Entrar</button>
 </section>
 
-
-<!-- TELA 3 - PLATAFORMA -->
+<!-- PLATAFORMA -->
 <section id="plataforma" class="screen">
-  <h2>Bem-vinda à sua plataforma!</h2>
+  <div class="dashboard">
+    <div class="top-bar">
+      <h2 id="tituloCurso"></h2>
+      <p id="infoMeta"></p>
+    </div>
 
-  <p><strong>Email:</strong> <span id="mostrarEmail"></span></p>
-  <p><strong>Curso:</strong> <span id="mostrarCurso"></span></p>
-  <p><strong>Horas por dia:</strong> <span id="mostrarHoras"></span></p>
-  <p><strong>Meta:</strong> <span id="mostrarMeta"></span></p>
+    <div class="study-card">Plano de Matemática</div>
+    <div class="study-card">Plano de História</div>
+    <div class="study-card">Plano de Biologia</div>
+  </div>
 </section>
-
 
 <script>
 
-// OLHINHO
-function toggleSenha() {
-  const senha = document.getElementById("senha");
-  senha.type = senha.type === "password" ? "text" : "password";
-}
+let estiloEscolhido = null;
 
-
-// VALIDAR E IR PARA ESTILO
-function irParaEstilo() {
-
-  if (
-    email.value === "" ||
-    senha.value === "" ||
-    curso.value === "" ||
-    horas.value === "" ||
-    meta.value === ""
-  ) {
-    alert("Preencha todos os campos!");
+function irParaEstilo(){
+  if(!email.value || !senha.value || !curso.value || !horas.value || !meta.value){
+    alert("Preencha todos os campos.");
     return;
   }
-
   cadastro.classList.remove("active");
   estilo.classList.add("active");
 }
 
-
-// DEFINIR TEMA
-function definirTema(tema) {
-  document.body.className = tema;
+function selecionar(tipo,elemento){
+  estiloEscolhido = tipo;
+  document.querySelectorAll(".style-card")
+    .forEach(c=>c.classList.remove("selected"));
+  elemento.classList.add("selected");
 }
 
-
-// ENTRAR
-function entrar() {
+function entrar(){
+  if(!estiloEscolhido){
+    alert("Escolha um estilo.");
+    return;
+  }
 
   estilo.classList.remove("active");
   plataforma.classList.add("active");
 
-  mostrarEmail.textContent = email.value;
-  mostrarCurso.textContent = curso.value;
-  mostrarHoras.textContent = horas.value;
-  mostrarMeta.textContent = meta.value;
+  plataforma.classList.add(estiloEscolhido);
+
+  tituloCurso.innerText = curso.value;
+  infoMeta.innerText = "Meta: " + meta.value + " | Horas/dia: " + horas.value;
 }
 
 </script>
