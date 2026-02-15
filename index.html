@@ -90,7 +90,79 @@
     </section>
 
   </div>
+<body class="academico">
 
+<!-- CADASTRO -->
+<section id="auth-screen" class="screen active">
+  <h2>Cadastro</h2>
+  <input id="course" placeholder="Curso" />
+  <input id="study-time" placeholder="Horas por dia" />
+  <input id="goal" placeholder="Meta" />
+  <button onclick="irParaEstilo()">Continuar</button>
+</section>
+
+<!-- ESCOLHA DE ESTILO -->
+<section id="style-screen" class="screen">
+  <h2>Escolha o estilo da sua experiência</h2>
+
+  <button onclick="definirTema('academico')">
+    Plataforma Acadêmica
+  </button>
+
+  <button onclick="definirTema('moderno')">
+    Plataforma Moderna
+  </button>
+</section>
+
+<!-- PLATAFORMA -->
+<section id="platform" class="screen">
+
+  <aside class="sidebar">
+    <ul>
+      <li onclick="navigate('dashboard')">Dashboard</li>
+      <li onclick="navigate('materias')">Matérias</li>
+      <li onclick="navigate('simulado')">Simulado</li>
+      <li onclick="navigate('config')">Configurações</li>
+    </ul>
+  </aside>
+
+  <main id="content">
+
+    <div id="dashboard" class="page active">
+      <h3>Dashboard</h3>
+      <p>Meta: <span id="goal-display"></span></p>
+      <p>Horas por dia: <span id="time-display"></span></p>
+    </div>
+
+    <div id="materias" class="page">
+      <h3>Matérias</h3>
+      <p>Em construção...</p>
+    </div>
+
+    <div id="simulado" class="page">
+      <h3>Simulado</h3>
+
+      <select id="dificuldade">
+        <option value="facil">Fácil</option>
+        <option value="medio">Médio</option>
+        <option value="dificil">Difícil</option>
+      </select>
+
+      <button onclick="iniciarSimulado()">Iniciar</button>
+
+      <div id="simulado-area"></div>
+    </div>
+
+    <div id="config" class="page">
+      <h3>Configurações</h3>
+
+      <button onclick="definirTema('academico')">Tema Acadêmico</button>
+      <button onclick="definirTema('moderno')">Tema Moderno</button>
+    </div>
+
+  </main>
+
+</section>
   <!-- SCRIPT -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -125,7 +197,38 @@
       });
 
     });
-  </script>
+<script>
 
+function irParaEstilo() {
+  document.getElementById("auth-screen").classList.remove("active");
+  document.getElementById("style-screen").classList.add("active");
+
+  document.getElementById("goal-display").textContent =
+    document.getElementById("goal").value;
+
+  document.getElementById("time-display").textContent =
+    document.getElementById("study-time").value;
+}
+
+function definirTema(tema) {
+  document.body.className = tema;
+
+  document.getElementById("style-screen").classList.remove("active");
+  document.getElementById("platform").classList.add("active");
+}
+
+function navigate(page) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById(page).classList.add("active");
+}
+
+function iniciarSimulado() {
+  const dificuldade = document.getElementById("dificuldade").value;
+  const area = document.getElementById("simulado-area");
+
+  area.innerHTML = "Simulado iniciado - Dificuldade: " + dificuldade;
+}
+
+</script>
 </body>
 </html>
